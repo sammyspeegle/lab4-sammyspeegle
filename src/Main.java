@@ -70,6 +70,12 @@ public class Main {
                 printing.println("Car, " + VehicleTag + ", " +  VehicleVin + ", " +  VehiclePurchPrice + ", " + VehiclePurchYear + ", " + vehicleType + ", " + tint + ", " + numDoors);
                 inventory.add(new Car(VehicleTag, VehicleVin, VehiclePurchPrice, VehiclePurchYear,
                         vehicleType, tint, numDoors));
+                Vehicle vehi = new Car(VehicleTag, VehicleVin, VehiclePurchPrice, VehiclePurchYear,
+                        vehicleType, tint, numDoors);
+
+                DisplayTaxResult(vehi, inventory);
+
+
             }
             else if(vehicleType.equals("truck")){
                 System.out.println("What is the weight of the truck?");
@@ -78,10 +84,16 @@ public class Main {
 
                 printing.println("Truck, " + VehicleTag + ", " +  VehicleVin + ", " +  VehiclePurchPrice + ", " + VehiclePurchYear + ", " + vehicleType + ", " + weight);
                 inventory.add(new Truck(VehicleTag, VehicleVin, VehiclePurchPrice, VehiclePurchYear, weight));
+                Vehicle vehi = new Truck(VehicleTag, VehicleVin, VehiclePurchPrice, VehiclePurchYear, weight);
+
+                DisplayTaxResult(vehi, inventory);
             }
             else{
                 printing.println("Vehicle, " + VehicleTag + ", " +  VehicleVin + ", " +  VehiclePurchPrice + ", " + VehiclePurchYear + ", " + vehicleType);
                 inventory.add(new Vehicle(VehicleTag, VehicleVin, VehiclePurchPrice, VehiclePurchYear));
+                Vehicle vehi = new Vehicle(VehicleTag, VehicleVin, VehiclePurchPrice, VehiclePurchYear);
+
+                DisplayTaxResult(vehi, inventory);
             }
 
 
@@ -98,7 +110,7 @@ public class Main {
 
     //4) for each vehicle in the inventory print the tag and the tax
 
-    public static void DisplayTaxResult(ArrayList inventory){
+    public static void DisplayTaxResult(Vehicle myV, ArrayList inventory){
 
         final String DASH = "-";
 
@@ -112,9 +124,9 @@ public class Main {
         theText.append(String.format("%-12s%-10s%10s%n","V. type","V. tag","Tax Due"));
         theText.append(String.format("%32s%n%n",DASH.repeat(32)));
 
-        Vehicle myV = new Vehicle();
-        inventory.add(myV);
-        for(int i = 0; i<2; i++){
+       // Vehicle myV = new Vehicle();
+        //inventory.add(myV);
+        for(int i = 0; i<1; i++){
             theText.append(String.format("%-12s%-10s%,10.2f%n",
                     myV.getType(),myV.getTag(), myV.getTax()));
         }
@@ -150,7 +162,8 @@ public class Main {
         //calling methods
         Main.workOnFile(inventory);
 
-        Main.DisplayTaxResult(inventory);
+
+       //Main.DisplayTaxResult(inventory);
 
         //3) put vehicles in the inventory (read from a file and add), the followin lines are examples
 
