@@ -57,10 +57,10 @@ public class Vehicle {
      //2.1) getTax should compute the basic vehicle tax based on purchase price
 
     public double getTax(){
-        double priceNoYrs = (double)(Vpurchaseprice);
+        double priceNoYrs = (double)(Vpurchaseprice)*(.055);
         double priceWithTax = 0;
-        for(int i =1; i<=Vpurchaseyear; i++){
-            priceWithTax =  priceNoYrs * (i)*(.1);
+        for(int i =1; i<=10; i++){
+            priceWithTax =  priceNoYrs * ((i)*(.1));
         }
 
         return priceWithTax;
